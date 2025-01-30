@@ -1,9 +1,32 @@
+
+// ====== Notyf ======
+const notyf = new Notyf({
+  duration: 3000,
+  position: {
+    x: "center",
+    y: "top",
+  },
+  types: [
+    {
+      type: "info",
+      background: "#FFFF00",
+      icon: "❎",
+    },
+    {
+      type: "success",
+      background: "#4CAF50",
+      icon: "✅",
+    },
+  ],
+});
+
+// =====================
+
 const getValue = (id) => {
   return document.getElementById(id).value;
 };
 
-// ==========
-
+// ========== Registration ==========
 const handleRegistration = (event) => {
   event.preventDefault();
 
@@ -14,6 +37,28 @@ const handleRegistration = (event) => {
   const password = getValue("password");
   const confirm_password = getValue("confirm_password");
 
+  const errorMessage = getValue("errorMessage");
+  const submitBtn = getValue("submit_btn");
+  const loadingSpinner = getValue("loading_spinner");
+  const centerLoading = getValue("center_loading");
+
+  errorMessage.innerHTML = "";
+
+  if (password !== confirm_password) {
+    errorMessage.innerHTML = "Passwords do not match!";
+    notyf.error("Passwords do not match!");
+    return;
+  }
+
+  const passwordRegex =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+  if (!passwordRegex.test(password)) {
+    errorMessage.innerHTML =
+      "Password must be at least 8 characters long, contain at least one letter, one number, and one special character.";
+    notyf.error("Password must be at least 8 characters long, contain at least one letter, one number, and one special character.");
+    return;
+  }
+
   const info = {
     username,
     first_name,
@@ -23,51 +68,52 @@ const handleRegistration = (event) => {
     confirm_password,
   };
 
-  const passwordRegex =
-    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+  submitBtn.disabled = true;
+  loadingSpinner.style.display = "inline-block";
+  centerLoading.style.display = "block";
 
-  if (password === confirm_password) {
-    document.getElementById("error_id").innerText = "";
-
-    if (passwordRegex.test(password)) {
-      console.log("User Info:", info);
-      fetch("https://clothify-yzcm.onrender.com/api/accounts/register/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(info),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          alert(data.message);
-          console.log(data);
+  fetch("https://clothify-yzcm.onrender.com/api/accounts/register/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(info),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.message) {
+        notyf.success(data.message);
+      } else if (data.email) {
+        notyf.error("Email is already registered!");
+      } else if (data.errors) {
+        Object.keys(data.errors).forEach((field) => {
+          const errorMessage = data.errors[field].join(", ");
+          notyf.error(`${errorMessage}`);
         });
-    } else {
-      document.getElementById("error_id").innerText =
-        "Password must be at least 8 characters long, contain at least one letter, one number, and one special character.";
-    }
-  } else {
-    document.getElementById("error_id").innerText = "Passwords do not match!";
-    alert("Passwords do not match!");
-  }
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      notyf.error("Something went wrong! Please try again.");
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      loadingSpinner.style.display = "none";
+      centerLoading.style.display = "none";
+    });
 };
 
 
-
-// ======= Handle Login
+// ======= Handle Login =======
 const handleLogin = (event) => {
   event.preventDefault();
+
+  const submitBtn = document.getElementById("submit_btn");
+  const loadingSpinner = document.getElementById("loading_spinner");
 
   const username = getValue("username");
   const password = getValue("password");
 
-  Swal.fire({
-    title: "Loading...",
-    text: "Please wait while we process your request.",
-    allowOutsideClick: false,
-    didOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  submitBtn.disabled = true;
+  loadingSpinner.style.display = "inline-block";
 
   fetch("https://clothify-yzcm.onrender.com/api/accounts/login/", {
     method: "POST",
@@ -76,8 +122,6 @@ const handleLogin = (event) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      Swal.close();
-
       if (data.token && data.user_id) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user_id", data.user_id);
@@ -85,26 +129,21 @@ const handleLogin = (event) => {
         localStorage.setItem("login_success", "true");
 
         window.location.href = "index.html";
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: data.error || "Invalid credentials! Please try again.",
-          // footer: '<a href="#">Why do I have this issue?</a>',
-        });
+      } else if (data.error) {
+        notyf.error(data.error);
       }
     })
     .catch((error) => {
-      Swal.close();
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Something went wrong!",
-        footer: '<a href="#">Why do I have this issue?</a>',
-      });
       console.error("Error:", error);
+      notyf.error("Something went wrong! Please try again.");
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      loadingSpinner.style.display = "none";
     });
 };
+
+
 
 // === Show Success Message ===
 const LoginMessage = () => {
@@ -125,5 +164,3 @@ const LoginMessage = () => {
 };
 
 document.addEventListener("DOMContentLoaded", LoginMessage);
-
-// ===--=-===-==--=
