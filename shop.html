@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Store</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/notyf/notyf.min.js"></script>
+
+    <link rel="stylesheet" href="shop.css" />
+    <link rel="stylesheet" href="navbar.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <!-- <header class="header-section text-center text-white position-relative">
+
+      <div id="headerCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="./img/clothing_10.jpg"
+              class="img-fluid d-block w-100"
+              alt="Fashion"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./img/clothing_2.jpg"
+              class="img-fluid d-block w-100"
+              alt="Clothing"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./img/clothing_1.jpg"
+              class="img-fluid d-block w-100"
+              alt="Style"
+            />
+          </div>
+        </div>
+      </div>
+    </header> -->
+
+    <!-- <div class="hero-text position-absolute top-50 start-50 translate-middle text-center">
+            <h1 class="fw-bold">Style That Speaks for You</h1>
+            <p class="lead">Discover Trendy, Affordable & Timeless Fashion</p>
+            <a href="shop.html" class="btn btn-light btn-lg">Shop Now</a>
+        </div> -->
+    <section class="hero">
+      <div class="container">
+        <h1>Welcome to <span>Clothify</span></h1>
+        <p>
+          Discover our collection of premium-quality products designed to bring
+          together style, comfort, and functionality. Elevate your fashion game
+          with Clothify.
+        </p>
+      </div>
+    </section>
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-3">
+          <!-- Search Box -->
+          <div class="mb-4 p-3 border rounded bg-light shadow-sm">
+            <h5 class="text-center text-primary">Search</h5>
+            <input
+              id="search-input"
+              class="form-control"
+              type="search"
+              placeholder="Search for products..."
+            />
+          </div>
+
+          <!-- Category Filter -->
+          <div class="mb-4 p-3 border rounded bg-light shadow-sm">
+            <h5 class="text-center text-dark">Categories</h5>
+            <ul class="list-unstyled">
+              <li>
+                <input
+                  type="checkbox"
+                  class="category-filter"
+                  value="tshirts-polos"
+                />
+                T-Shirts & Polos
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="category-filter"
+                  value="pants-jeans"
+                />
+                Pants & Jeans
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="category-filter"
+                  value="jackets-coats"
+                />
+                Jackets & Coats
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="category-filter"
+                  value="dresses"
+                />
+                Dresses & Jumpsuits
+              </li>
+              <li>
+                <button
+                  class="btn btn-light btn-sm w-100 text-start mt-2"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#moreCategories"
+                >
+                  More Categories <i class="fas fa-chevron-down"></i>
+                </button>
+                <ul class="collapse list-unstyled mt-2" id="moreCategories">
+                  <li>
+                    <input
+                      type="checkbox"
+                      class="category-filter"
+                      value="shirts"
+                    />
+                    Casual & Formal Shirts
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      class="category-filter"
+                      value="hoodies-sweatshirts"
+                    />
+                    Hoodies & Sweatshirts
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      class="category-filter"
+                      value="shorts-Bermudas"
+                    />
+                    Shorts & Bermudas
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      class="category-filter"
+                      value="activewear"
+                    />
+                    Activewear & Gym Wear
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Color Filter -->
+          <div class="mb-4 p-3 border rounded bg-light shadow-sm">
+            <h5 class="text-center text-danger">Color</h5>
+            <div class="d-flex flex-wrap gap-2 justify-content-center">
+              <span class="color-box bg-black border" data-color="black"></span>
+              <span class="color-box bg-white border" data-color="white"></span>
+              <span
+                class="color-box bg-primary border"
+                data-color="blue"
+              ></span>
+              <span class="color-box bg-danger border" data-color="red"></span>
+              <span
+                class="color-box bg-success border"
+                data-color="green"
+              ></span>
+            </div>
+            <p class="text-center mt-2">
+              Selected Color: <strong id="selected-color">None</strong>
+            </p>
+            <button
+              id="reset-color"
+              class="btn btn-sm btn-outline-danger d-block mx-auto mt-2"
+            >
+              Reset
+            </button>
+          </div>
+
+          <!-- Price Filter -->
+          <div class="mb-4 p-3 border rounded bg-light shadow-sm">
+            <h5 class="text-center text-warning">Price Range</h5>
+            <div class="d-flex justify-content-between">
+              <input
+                type="number"
+                id="min-price-filter"
+                class="form-control"
+                placeholder="Min ($)"
+                min="100"
+                max="10000"
+                step="10"
+              />
+              <input
+                type="number"
+                id="max-price-filter"
+                class="form-control"
+                placeholder="Max ($)"
+                min="100"
+                max="10000"
+                step="10"
+              />
+            </div>
+            <input
+              type="range"
+              id="price-slider"
+              min="100"
+              max="10000"
+              step="10"
+              class="form-range mt-2"
+            />
+            <p class="text-center">
+              Selected: <strong id="price-display">$100 - $10000</strong>
+            </p>
+            <button
+              id="reset-price"
+              class="btn btn-sm btn-outline-warning d-block mx-auto mt-2"
+            >
+              Reset
+            </button>
+          </div>
+
+          <!-- Size Filter -->
+          <div class="mb-4 p-3 border rounded bg-light shadow-sm">
+            <h5 class="text-center text-info">Sizes</h5>
+            <select id="size-filter" class="form-select">
+              <option value="">All Size</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+            </select>
+          </div>
+
+          <!-- Brand Filter -->
+          <div class="mb-4 p-3 border rounded bg-light shadow-sm">
+            <h5 class="text-center text-info">Brands</h5>
+            <select id="brand-filter" class="form-select">
+              <option value="">All Brands</option>
+              <option value="nike">Nike</option>
+              <option value="adidas">Adidas</option>
+              <option value="zara">Zara</option>
+              <option value="h&m">H&M</option>
+              <option value="gucci">Gucci</option>
+              <option value="uniqlo">Uniqlo</option>
+              <option value="puma">Puma</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product List & Sorting -->
+        <div class="col-lg-9 col-md-8">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <!-- Centered Title -->
+            <h2 class="text-center mb-0 fw-bold text-primary w-100">
+              Our Products
+            </h2>
+            <!-- Sort By Dropdown -->
+            <select id="sort-filter" class="form-select w-auto ms-auto">
+              <option value="">Sort By</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="latest">Newest Arrivals</option>
+            </select>
+          </div>
+          <div class="row" id="product-list">
+            <!-- Products... -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="shop.js"></script>
+    <script src="navbar.js"></script>
+    <script src="footer.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

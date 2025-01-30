@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/notyf/notyf.min.js"></script>
+
+    <link rel="stylesheet" href="details.css" />
+    <link rel="stylesheet" href="navbar.css" />
+  </head>
+  <body>
+    <!-- nav -->
+    <nav id="navbar"></nav>
+
+    <div class="container mt-5 pt-5">
+      <div id="details-container" class="row"></div>
+      <ul class="nav nav-tabs mt-5 pt-5 justify-content-center" id="myTab">
+        <li class="nav-item">
+          <a class="nav-link active" data-bs-toggle="tab" href="#description"
+            >Description</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#reviews">Reviews</a>
+        </li>
+      </ul>
+
+      <div class="tab-content mt-4">
+        <div class="tab-pane fade show active" id="description">
+          <p id="product-description" class="text-muted"></p>
+        </div>
+
+        <!-- Reviews Tab -->
+        <div class="tab-pane fade" id="reviews">
+          <div id="reviews-container" class="mt-3"></div>
+
+          <h5 class="mt-4 text-center text-primary">Write a Review</h5>
+          <form
+            id="review-form"
+            onsubmit="Review_Submit(event)"
+            class="p-3 border rounded shadow-sm bg-light"
+          >
+            <div class="mb-3">
+              <label for="review-text" class="form-label fw-bold"
+                >Your Review:</label
+              >
+              <textarea
+                id="review-text"
+                class="form-control"
+                rows="4"
+                placeholder="Share your experience..."
+                required
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="review-rating" class="form-label fw-bold"
+                >Rating:</label
+              >
+              <select id="review-rating" class="form-select" required>
+                <option value="⭐">⭐</option>
+                <option value="⭐⭐">⭐⭐</option>
+                <option value="⭐⭐⭐">⭐⭐⭐</option>
+                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+              </select>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-success px-4">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="details.js"></script>
+    <script src="navbar.js"></script>
+    <script src="footer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://use.fontawesome.com/f1f4436fd5.js"></script>
+  </body>
+</html>

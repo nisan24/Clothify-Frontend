@@ -1,0 +1,119 @@
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+.hero-about {
+  background: linear-gradient(45deg, #1e2a47, #283b5d);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero-about h1 {
+  font-size: 3rem;
+  color: #fff;
+}
+
+.hero-about p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.hero-about button {
+  background-color: #fff;
+  color: #333;
+  font-size: 1.1rem;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.hero-about button:hover {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.our-story {
+  background-color: #f5f5f5;
+  padding: 60px 0;
+  color: #333;
+}
+
+.our-story h2 {
+  font-size: 2.5rem;
+  color: #121212;
+}
+
+.our-story p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.our-story img {
+  border-radius: 15px;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.about img {
+  border-radius: 15px;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.our-values i {
+  color: #2196f3;
+}
+
+.our-values h4 {
+  color: #fff;
+}
+
+.our-values p {
+  color: #ccc;
+}
+
+.team-card {
+  text-align: center;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.team-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #2196f3;
+}
+
+.team-card h3 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+.team-card p {
+  color: #aaa;
+}
+
+footer {
+  background-color: #1f1f1f;
+  color: #ccc;
+  text-align: center;
+  padding: 15px 0;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #2196f3;
+  color: #fff;
+}

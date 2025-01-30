@@ -1,0 +1,49 @@
+.checkout-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.checkout-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#orderSummary {
+    list-style-type: none;
+    padding: 0;
+}
+
+#orderSummary li {
+    margin-bottom: 10px;
+}
+
+#orderSummary .total {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
