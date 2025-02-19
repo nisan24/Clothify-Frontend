@@ -2,32 +2,199 @@ document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.getElementById("navbar");
 
   navbar.innerHTML = `
-    <nav class="navbar navbar-expand-lg fixed-top bg-light shadow">
-        <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold text-primary" href="index.html">Clothify</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="shop.html" id="categoriesDropdown" role="button" data-bs-toggle="dropdown">Shop</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="shop.html"><i class="fas fa-store me-2"></i> All Products</a></li>
-                            <li><a class="dropdown-item" href="shop.html?categorys=Men"><i class="fas fa-male me-2"></i> Men</a></li>
-                            <li><a class="dropdown-item" href="shop.html?categorys=Women"><i class="fas fa-female me-2"></i> Women</a></li>
-                            <li><a class="dropdown-item" href="shop.html?categorys=Kids"><i class="fas fa-child me-2"></i> Kids</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
-                </ul>
-                <div class="d-flex align-items-center gap-3" id="authSection"></div>
+    <header class="sticky-top" id="myHeader">
+      <div class="top-container bg-white  shadow-sm" id="topContainer">
+        <div
+          class="container d-flex justify-content-between align-items-center"
+        >
+          <!-- L -->
+          <div class="search-bar d-none d-lg-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text bg-transparent border-end-0">
+                <i class="bi bi-search"></i>
+              </span>
+              <input
+                type="text"
+                class="form-control border-start-0"
+                placeholder="Search for products..."
+              />
             </div>
+          </div>
+
+          <!-- L  -->
+          <div class="website-name d-none d-lg-block">
+            <h1 class="mb-0 text-uppercase">Clothify</h1>
+          </div>
+
+          <!-- L -->
+          <div class="d-none d-lg-flex align-items-center" id="authSection">
+          </div>
+
+          <!-- M -->
+          <div class="d-flex d-lg-none align-items-center w-100">
+            <div class="website-name">
+              <h1 class="mb-0 text-uppercase">Clothify</h1>
+            </div>
+
+            <!-- M -->
+            <div class="ms-auto d-flex align-items-center" id="authSection">
+
+            </div>
+
+          </div>
         </div>
-    </nav>
+      </div>
+      <hr />
+
+      <!-- M -->
+      <div
+        class="search-menu-container bg-light py-2 d-lg-none"
+        id="searchMenuContainer"
+      >
+        <div class="container">
+          <!-- Search Bar (Mobile) -->
+          <div class="search-bar mb-2">
+            <div class="input-group">
+              <span class="input-group-text bg-transparent border-end-0">
+                <i class="bi bi-search"></i>
+              </span>
+              <input
+                type="text"
+                class="form-control border-start-0"
+                placeholder="Search for products..."
+              />
+            </div>
+          </div>
+
+        <!-- M menu -->
+        <div class="d-flex align-items-center">
+          <button class="navbar-toggler d-flex align-items-center border-0" 
+            type="button" 
+            data-bs-toggle="offcanvas" 
+            data-bs-target="#offcanvasMenu" 
+            id="menubar"
+            style="font-weight: 500; font-size: 16px; color: #333;">
+            <i class="bi bi-list fs-4 me-1"></i> Menu
+          </button>
+        </div>
+
+        </div>   
+      </div>
+
+      <!-- Navigation Menu L -->
+      <div class="second-part bg-light d-none d-lg-block">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-uppercase" href="index.html">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle fw-bold text-uppercase"
+                  href="shop.html"
+                  id="shopMenu"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  >Shop</a
+                >
+                <div class="dropdown-content">
+                  <a class="dropdown-item" href="shop.html">All Products</a>
+                  <a class="dropdown-item" href="shop.html?categorys=Men">Men</a>
+                  <a class="dropdown-item" href="shop.html?categorys=Women">Women</a>
+                  <a class="dropdown-item" href="shop.html?categorys=Kids">Kids</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-uppercase" href="about.html">About</a>
+                <!-- <a class="nav-link fw-bold text-uppercase" href="#">Collections</a> -->
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle fw-bold text-uppercase"
+                  href="#"
+                  id="fashionMenu"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  >Fashion</a
+                >
+                <div class="dropdown-content">
+                  <a class="dropdown-item" href="#">Dress Skirt</a>
+                  <a class="dropdown-item" href="#">Men Clothes</a>
+                  <a class="dropdown-item" href="#">Women Clothes</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-uppercase" href="contact-us.html">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Menu M -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link fw-bold text-uppercase" href="index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle fw-bold text-uppercase"
+              href="shop.html"
+              id="mobileShopMenu"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >Shop</a
+            >
+            <ul class="dropdown-content">
+              <a class="dropdown-item" href="shop.html">All Products</a>
+              <a class="dropdown-item" href="shop.html?categorys=Men">Men</a>
+              <a class="dropdown-item" href="shop.html?categorys=Women">Women</a>
+              <a class="dropdown-item" href="shop.html?categorys=Kids">Kids</a>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold text-uppercase" href="#">Collections</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle fw-bold text-uppercase"
+              href="#"
+              id="mobileFashionMenu"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >Fashion</a
+            >
+            <ul class="dropdown-content">
+              <li><a class="dropdown-item" href="#">Dress Skirt</a></li>
+              <li><a class="dropdown-item" href="#">Men Clothes</a></li>
+              <li><a class="dropdown-item" href="#">Women Clothes</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold text-uppercase" href="contact-us.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   `;
+
+  // =======================
 
   const token = localStorage.getItem("token");
   const name = localStorage.getItem("name");
@@ -35,45 +202,92 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (token) {
     authSection.innerHTML = `
-      <div class="d-flex align-items-center gap-4">
-        <a class="nav-link position-relative wishlist-icon" href="wishlist.html">
-            <i class="fas fa-heart fa-lg text-danger"></i>
-            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="wishlistCount">0</span>
-        </a>
-        <a class="nav-link position-relative cart-icon" href="cart.html">
-            <i class="fas fa-shopping-cart fa-lg text-warning"></i>
-            <span class="badge bg-warning position-absolute top-0 start-100 translate-middle" id="cartCount">0</span>
-        </a>
-        <div class="dropdown ms-3">
-            <a class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-                <i class="fas fa-user-circle fa-lg me-2"></i> ${name}
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end shadow mt-2">
-                <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Profile</a></li>
-                <li><a class="dropdown-item" href="my_order.html"><i class="fas fa-box-open me-2"></i> Orders</a></li>
-                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
-                <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
-            </ul>
-        </div>
-      </div>
-    `;
+    <div class="account-icon me-2 position-relative">
+      <a href="#" class="text-dark" data-bs-toggle="dropdown">
+        <i class="bi bi-person-circle"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Accounts</a></li>
+        <li><a class="dropdown-item" href="my_order.html"><i class="fas fa-box-open me-2"></i> Orders</a></li>
+        <li><a class="dropdown-item text-red" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+      </ul>
+    </div>
+    <div class="wishlist-icon-2 me-3 position-relative">
+      <a href="wishlist.html" class="text-dark">
+        <i class="bi bi-heart"></i>
+      </a>
+      <span class="badge" id="wishlistCount">0</span>
+    </div>
+    <div class="cart-icon position-relative">
+      <a href="cart.html" class="text-dark">
+        <i class="bi bi-cart"></i>
+      </a>
+      <span class="badge" id="cartCount">0</span>
+    </div>
+  `;
     document
       .getElementById("logoutBtn")
       .addEventListener("click", handleLogout);
   } else {
     authSection.innerHTML = `
-      <a class="btn btn-primary" href="register.html">Register</a>
-      <a class="btn btn-outline-primary" href="login.html">Login</a>
-    `;
+    <div class="account-icon me-2 position-relative">
+      <a href="#" class="text-dark" data-bs-toggle="dropdown">
+        <i class="bi bi-person-circle"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item mt-2" href="register.html"><i class="fa-solid fa-user-plus"></i> <strong>Register</strong></a></li>
+        <li><a class="dropdown-item mt-2 mb-2" href="login.html"><i class="fa-solid fa-right-to-bracket"></i> <strong>Login</strong></a></li>
+      </ul>
+    </div>
+  `;
   }
+
+  // =======================
+
+
+  window.onscroll = function () {
+    myFunction();
+  };
+
+  var header = document.getElementById("myHeader");
+  var sticky = header.offsetTop;
+  var topContainer = document.getElementById("topContainer");
+  var searchMenuContainer = document.getElementById("searchMenuContainer");
+  var menubar = document.getElementById("menubar");
+
+  function myFunction() {
+    if (window.pageYOffset > sticky) {
+      header.classList.add("sticky");
+      topContainer.style.display = "none";
+      menubar.style.position = "fixed";
+      menubar.style.top = "0";
+      menubar.style.left = "0";
+      menubar.style.right = "0";
+      menubar.style.backgroundColor = "white";
+      menubar.style.padding = "10px 15px";
+      menubar.style.zIndex = "1000";
+      menubar.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.1)";
+    } else {
+      header.classList.remove("sticky");
+      topContainer.style.display = "flex";
+      menubar.style.position = "static";
+      menubar.style.backgroundColor = "transparent";
+      menubar.style.padding = "0";
+      menubar.style.boxShadow = "none";
+    }
+  }
+
+
 });
+
+// ============================
 
 // Handle Logout
 const handleLogout = (event) => {
   event.preventDefault();
   const token = localStorage.getItem("token");
 
-  fetch("https://clothify-yzcm.onrender.com/api/accounts/logout/", {
+  fetch("http://127.0.0.1:8000/api/accounts/logout/", {
     method: "POST",
     headers: {
       Authorization: `Token ${token}`,
@@ -91,7 +305,8 @@ const handleLogout = (event) => {
     });
 };
 
-// ==========
+// =======================
+
 function cartCountShow() {
   const token = localStorage.getItem("token");
 
@@ -112,7 +327,8 @@ function cartCountShow() {
     .catch((error) => console.error("API Error:", error));
 }
 
-// ===
+// =========================
+
 function wishlistCountShow() {
   const token = localStorage.getItem("token");
 
@@ -142,3 +358,5 @@ document.addEventListener("DOMContentLoaded", function () {
   cartCountShow();
   wishlistCountShow();
 });
+
+

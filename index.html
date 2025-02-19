@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clothify</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link
@@ -26,50 +34,135 @@
       href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="footer.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- navbar -->
     <div id="navbar"></div>
+    <!-- =================================== -->
 
-    <header class="hero-section position-relative">
-      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="hero-section">
+      <div class="hero-text">
+        <h5 class="text-uppercase">Trending Collection</h5>
+        <h2>
+          Limited Edition For Men’s <br />
+          Styles Fashion
+        </h2>
+        <p>Awesome products for the dynamic urban lifestyle</p>
+        <button type="button">SHOP NOW</button>
+      </div>
+      <div class="hero-img">
+        <img src="./img/image-removebg-preview.png" alt="Hero Image" />
+      </div>
+    </div>
+
+    <!-- =================================== -->
+    <div class="text-center g-3 pt-4" style="background-color: #faf8f2">
+      <div class="text-center mt-5 mb-5">
+        <h2>Best For Your Categories</h2>
+        <p>
+          Mauris quis nisi elit curabitur sodales libero ac interdum finibus.
+        </p>
+      </div>
+
+      <!-- Category List with Carousel -->
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img
-              src="./img/clothing_5.jpg"
-              class="img-fluid d-block w-100"
-              alt="Fashion"
-            />
+            <div
+              class="d-flex flex-wrap justify-content-center g-4 m-4 p-4"
+              id="category-container"
+            >
+              <!-- --------------- -->
+            </div>
           </div>
-          <div class="carousel-item">
+        </div>
+
+        <!-- Carousel Controls btn -->
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- =================================== -->
+
+    <!-- Fashion Section -->
+    <section class="container py-5">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="fashion-card h-100 shadow position-relative">
             <img
-              src="./img/clothing_11.jpg"
-              class="img-fluid d-block w-100"
-              alt="Clothing"
+              src="./img/sub-banner-1.png"
+              class="fashion-card-img"
+              alt="T-shirt 1"
             />
+            <div class="position-absolute top-0 start-0 p-3">
+              <h5 class="fashion-card-title">2024 FASHION</h5>
+              <p class="fashion-card-text">Locomotive Men Blue T-shirt</p>
+              <a href="#" class="fashion-card-link">Shop Now</a>
+            </div>
           </div>
-          <div class="carousel-item">
+        </div>
+
+        <div class="col">
+          <div class="fashion-card h-100 shadow position-relative">
             <img
-              src="./img/clothing_6.jpg"
-              class="img-fluid d-block w-100"
-              alt="Style"
+              src="./img/sub-banner-2.png"
+              class="fashion-card-img"
+              alt="T-shirt 2"
             />
+            <div class="position-absolute top-0 start-0 p-3">
+              <h5 class="fashion-card-title">Stylish Shoes</h5>
+              <p class="fashion-card-text">Solethreads Women Sneakers Shoes</p>
+              <a href="#" class="fashion-card-link">Shop Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="fashion-card h-100 shadow position-relative">
+            <img
+              src="./img/sub-banner-3.png"
+              class="fashion-card-img"
+              alt="Bag"
+            />
+            <div class="position-absolute top-0 start-0 p-3">
+              <h5 class="fashion-card-title">Lookout Fashion</h5>
+              <p class="fashion-card-text">Sisterhood Beige Small Bag</p>
+              <a href="#" class="fashion-card-link">Shop Now</a>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div
-        class="hero-text position-absolute translate-middle text-center mt-4"
-      >
-        <h1 class="fw-bold">Style That Speaks for You</h1>
-        <p class="lead">Discover Trendy, Affordable & Timeless Fashion</p>
-        <a href="shop.html" class="btn btn-primary rounded-pill">Shop Now</a>
-      </div>
-    </header>
-
+    <!-- =================================== -->
     <section class="container text-center py-5">
       <h2 class="mb-4">Our Products</h2>
       <div class="d-flex justify-content-between align-items-center mb-3">
@@ -80,7 +173,7 @@
         >
           <li class="nav-item" role="presentation">
             <button
-              class="nav-link active text-dark"
+              class="nav-link active text-dark bg-dark-subtle"
               id="new-arrival-tab"
               data-bs-toggle="pill"
               data-bs-target="#new-arrival"
@@ -112,14 +205,153 @@
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="new-arrival" role="tabpanel">
           <div class="row" id="arrival_Container"></div>
-          <a href="shop.html" class="btn btn-outline-primary mt-3">More</a>
+          <a href="shop.html" class="btn btn-outline-dark mt-3">More</a>
         </div>
         <div class="tab-pane fade" id="best-sellers" role="tabpanel">
           <div class="row" id="sellers_Container"></div>
-          <a href="shop.html" class="btn btn-outline-primary mt-3">More</a>
+          <a href="shop.html" class="btn btn-outline-dark mt-3">More</a>
         </div>
       </div>
     </section>
+    <!-- ============================= -->
+
+    <section class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-md-7 col-12 text-center text-md-start">
+          <img
+            src="./img/cms-banner-4.png"
+            alt="Fashion Banner"
+            class="img-fluid"
+          />
+        </div>
+        <div class="col-md-4 col-12">
+          <h4 class="fw-bold">
+            Inspiring Indians, Both Men & Women To Make Fashion & Lifestyle
+          </h4>
+          <p class="mt-3">
+            <strong
+              >They bring an extraordinary amount of it to the table</strong
+            >
+          </p>
+          <p class="text-muted">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the typesetting, remaining essentially unchanged.
+          </p>
+          <p class="btn btn-dark p-3">READ MORE</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ -->
+
+    <!-- Customer Reviews Section -->
+    <section class="container py-5">
+      <div class="text-center mb-4">
+        <h2 class="fw-bold" style="font-family: 'Poppins', sans-serif">
+          Customer Reviews
+        </h2>
+        <p class="text-muted">
+          Mauris quis nisi elit curabitur sodales libero ac interdum finibus.
+        </p>
+      </div>
+
+      <!-- Swiper Container -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="review-card p-4 shadow rounded">
+              <div class="text-center">
+                <img
+                  src="./img/cottetion.png"
+                  alt="Customer"
+                  class="rounded-circle mb-3"
+                  width="80"
+                />
+              </div>
+              <h4 class="fw-semibold text-center">
+                "Impressive quality, durable and reliable."
+              </h4>
+              <p class="text-muted text-center">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+                nostrum similique voluptatum.
+              </p>
+              <p class="text-primary text-center fw-bold">- Nisan Hossain</p>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="review-card p-4 shadow rounded">
+              <div class="text-center">
+                <img
+                  src="./img/cottetion.png"
+                  alt="Customer"
+                  class="rounded-circle mb-3"
+                  width="80"
+                />
+              </div>
+              <h4 class="fw-semibold text-center">
+                "Amazing experience! Worth every penny!"
+              </h4>
+              <p class="text-muted text-center">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, velit.
+              </p>
+              <p class="text-primary text-center fw-bold">- Rakib Hasan</p>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="review-card p-4 shadow rounded">
+              <div class="text-center">
+                <img
+                  src="./img/cottetion.png"
+                  alt="Customer"
+                  class="rounded-circle mb-3"
+                  width="80"
+                />
+              </div>
+              <h4 class="fw-semibold text-center">
+                "Highly recommended! Great service!"
+              </h4>
+              <p class="text-muted text-center">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusantium, adipisci.
+              </p>
+              <p class="text-primary text-center fw-bold">- Jannatul Ferdous</p>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="review-card p-4 shadow rounded">
+              <div class="text-center">
+                <img
+                  src="./img/cottetion.png"
+                  alt="Customer"
+                  class="rounded-circle mb-3"
+                  width="80"
+                />
+              </div>
+              <h4 class="fw-semibold text-center">
+                "Highly recommended! Great service!"
+              </h4>
+              <p class="text-muted text-center">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusantium, adipisci.
+              </p>
+              <p class="text-primary text-center fw-bold">- Jannatul Ferdous</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- ============================= -->
 
     <section class="container text-center py-5">
       <h2 class="mb-4">Explore by Categories</h2>
@@ -167,6 +399,8 @@
       </div>
     </section>
 
+    <!-- ===================================== -->
+
     <section class="features">
       <div class="feature-item">
         <i class="fas fa-shipping-fast"></i>
@@ -190,7 +424,21 @@
       </div>
     </section>
 
+    <!-- footer -->
     <div id="footer"></div>
+
+
+
+  <script>
+    document.querySelectorAll(".nav-link").forEach((tab) => {
+      tab.addEventListener("click", function () {
+        document
+          .querySelectorAll(".nav-link")
+          .forEach((el) => el.classList.remove("bg-dark-subtle"));
+        this.classList.add("bg-dark-subtle");
+      });
+    });
+  </script>
 
     <script src="navbar.js"></script>
     <script src="script.js"></script>
@@ -202,10 +450,8 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -11,7 +11,6 @@
 
 // ===========================
 
-//// ******
 const notyf = new Notyf({
   duration: 3000,
   position: {
@@ -31,6 +30,7 @@ const notyf = new Notyf({
     },
   ],
 });
+
 // ===========================
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -79,25 +79,53 @@ function displayProducts(data) {
     productCard.classList.add("col-lg-4", "col-md-6", "mb-4");
 
     productCard.innerHTML = `
-      <div class="card shadow-lg border-0 rounded h-100 product-card">
-        <div class="image-container position-relative">
-          <img class="card-img-top img-fluid product-image" src="${product.image}" alt="${product.name}">
-          <div class="icon-box position-absolute d-flex justify-content-center">
+
+        <div class="product-card image-container">
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+              class="product-img img-fluid"
+            />
+            <span class="wishlist-icon_2" onclick="Wishlist_fun(${product.id})>
+              <i class="fa-regular fa-heart"></i>
+            </span>
+            <div class="icon-box position-absolute d-flex justify-content-center">
             <button class="action-btn">
-              <a href="details.html?id=${product.id}" class="action-link"><i class="fas fa-eye"></i></a>
+              <a href="details.html?id=${
+                product.id
+              }" class="action-link"><i class="fas fa-eye"></i></a>
             </button>
-            <button class="action-btn wishlist-btn" onclick="Wishlist_fun(${product.id})"><i id="wishlist-icon" class="fas fa-heart"></i></button>
-            <button class="action-btn add-to-cart" onclick="AddToCart(${product.id})"><i class="fas fa-shopping-cart"></i></button>
+            <button class="action-btn wishlist-btn" onclick="Wishlist_fun(${
+              product.id
+            })"><i id="wishlist-icon" class="fas fa-heart"></i></button>
+            <button class="action-btn add-to-cart" onclick="AddToCart(${
+              product.id
+            })"><i class="fas fa-shopping-cart"></i></button>
           </div>
-        </div>
-        <div class="card-body text-center">
-          <h5 class="card-title text-primary">${product.name}</h5>
-          <p class="text-dark"><b>$${product.price}</b></p>
-        </div>
-      </div>
+          </div>
+          <div class="text-part text-center">
+            <h6 class="text-uppercase text-muted">${product.brand}</h6>
+            <p class="product-title">${product.name}</p>
+            <div class="star-rating">${AverageRating_cal(
+              product?.reviews
+            )} ⭐</div>
+            <p class="mt-1">
+              <span class="product-price">${product.price}</span>
+            </p>
+          </div>
     `;
     productContainer.appendChild(productCard);
   });
+}
+
+// === Average Rating Calculation ===
+function AverageRating_cal(reviews) {
+  if (!reviews || reviews.length === 0) return "No Ratings Yet";
+  const total_review_star = reviews.reduce(
+    (sum, r) => sum + r.rating.length,
+    0
+  );
+  return (total_review_star / reviews.length).toFixed(1);
 }
 
 // ===========================

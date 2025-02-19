@@ -38,16 +38,12 @@
 //       options.backgroundColor = "#6c757d";
 //   }
 
-  // iziToast[type]({
-  //   ...options,
-  // });
+// iziToast[type]({
+//   ...options,
+// });
 // };
 
-
-
-
 // ====================
-
 
 // ======
 const notyf = new Notyf({
@@ -100,31 +96,145 @@ const Details_show = () => {
           <img src='${data?.image}' class="img-fluid rounded">
         </div>
         <div class="col-md-7">
-
           <h2 class="productName">${data?.name || "Unknown Product"}</h2>
-          <h4><strong>Brand:</strong> ${data?.brand || "N/A"}</h4>
-          <h5><strong>Color:</strong> ${
-            data?.color || "N/A"
-          } | <strong> Size:</strong> ${data?.size || "N/A"}</h5>
-          <h3 class="text-danger">$${data?.price || "0.00"}</h3>
+          <h3 class="text-dark fw-bold">$${data?.price || "0.00"}</h3>
+          <p>${data.description}</p>
+          <h4>Vendor: ${data?.brand || "N/A"}</h4>
+          <h4>Category: ${data?.category || "N/A"}</h4>
+          <h5>Color: ${data?.color || "N/A"} | <strong> Size:</strong> ${
+        data?.size || "N/A"
+      }</h5>
           <h5><strong>Rating:</strong> ${AverageRating_cal(
             data?.reviews
           )} ⭐</h5>
 
           <div class="quantity-box">
-            <button class="btn btn-danger quantity-btn" onclick="Quantity_number(-1)">-</button>
-            <span class= "p-2" id="quantity">1</span>
-            <button class="btn btn-success quantity-btn" onclick="Quantity_number(1)">+</button>
+            <span>Quantity</span>
+            <div class="border border-1">
+
+              <button class="btn quantity-btn" onclick="Quantity_number(-1)">-</button>
+              <span class= "p-2" id="quantity">1</span>
+              <button class="btn quantity-btn" onclick="Quantity_number(1)">+</button>
+            </div>
           </div>
           <div class="d-flex gap-3 mt-3">
-            <button class="btn btn-success me-2 " onclick="AddToCart()">
+            <button class="btn btn-dark me-2 ms-3 " onclick="AddToCart()">
               <i class="fas fa-cart-plus"></i> Add to Cart
             </button>
-            <button class="wishlist-btn border rounded-3 p-2" onclick="Wishlist_fun()">
+            <button class="wishlist-btn btn-dark border rounded-3 p-2" onclick="Wishlist_fun()">
               <i id="wishlist-icon" class="fa-regular fa-heart"></i> Wishlist
             </button>
-
           </div>
+<!-- -------------- -->
+      <div class="accordion" id="customAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#shipping"
+              >
+                <span><i class="fas fa-plus"></i> Shipping & Returns </span>
+                <i class="fas fa-truck"></i>
+              </button>
+            </h2>
+            <div
+              id="shipping"
+              class="accordion-collapse collapse"
+              data-bs-parent="#customAccordion"
+            >
+              <div class="accordion-body">
+                Free shipping and returns available on all orders!
+                <br /><br />
+                We ship all US domestic orders within 5-10 business days
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#materials"
+              >
+                <span><i class="fas fa-plus"></i> Materials </span>
+                <i class="fas fa-tshirt"></i>
+              </button>
+            </h2>
+            <div
+              id="materials"
+              class="accordion-collapse collapse"
+              data-bs-parent="#customAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  The item with the Committed label has a lower environmental impact
+                  because it was made with sustainable materials or methods. We are
+                  committed to creating items that combine sustainability with
+                  style. Made with recycled cashmere and industril by products.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#sizeChart"
+              >
+                <span><i class="fas fa-plus"></i> Size Chart </span>
+                <i class="fas fa-ruler"></i>
+              </button>
+            </h2>
+            <div
+              id="sizeChart"
+              class="accordion-collapse collapse"
+              data-bs-parent="#customAccordion"
+            >
+              <div class="accordion-body">
+                We advise routinely dusting your items with a gentle cleanser to
+                preserve its look. Periodically, it may need to be softly wet with a
+                mild detergent solution.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#careInstructions"
+              >
+                <span><i class="fas fa-plus"></i> Care Instructions  </span>
+                <i class="fas fa-water"></i>
+              </button>
+            </h2>
+            <div
+              id="careInstructions"
+              class="accordion-collapse collapse"
+              data-bs-parent="#customAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  We advise routinely dusting your items with a gentle cleanser to
+                  preserve its look. Periodically, it may need to be softly wet with
+                  a mild detergent solution.
+                </p>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+<!-- ----------------- -->
         </div>
       `;
 
@@ -425,6 +535,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ============
+
+      document.querySelectorAll(".accordion-button").forEach((button) => {
+        button.addEventListener("click", function () {
+          let icon = this.querySelector("span i");
+          if (this.classList.contains("collapsed")) {
+            icon.classList.replace("fa-minus", "fa-plus");
+          } else {
+            icon.classList.replace("fa-plus", "fa-minus");
+          }
+        });
+      });
 
 // ==== *********
 // iziToast.success({

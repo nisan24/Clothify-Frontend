@@ -1,4 +1,3 @@
-
 // ==========================
 const notyf = new Notyf({
   duration: 3000,
@@ -138,37 +137,3 @@ function orderPayment(orderId) {
       notyf.error("Something wrong");
     });
 }
-
-// ==========================
-
-
-// function success_payment() {
-//   const params = new URLSearchParams(window.location.search);
-//   const tranId = params.get("tran_id");
-
-//   if (tranId) {
-//     const token = localStorage.getItem("token");
-
-//     fetch(`http://127.0.0.1:8000/api/payment/success/?tran_id=${tranId}`, {
-//       method: "POST",
-//       headers: {
-//         Authorization: `Token ${token}`,
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ tran_id: tranId }),
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         if (data.message === "Payment successful!") {
-//           // alert(data.message);
-//           notyf.success(data.message);
-//             window.location.href = "my_order.html";
-//         }
-//       })
-//       .catch((error) => {
-//         console.error("Error payment:", error);
-//         // alert("Failed to verify payment.");
-//         notyf.error("Failed verify payment.");
-//       });
-//   }
-// }

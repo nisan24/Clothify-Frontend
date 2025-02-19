@@ -1,0 +1,19 @@
+.mobile-input {
+    width: 25% !important;
+}
+
+.mobile-btn {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+@media (max-width: 768px) {
+    .mobile-input {
+        width: 50% !important;
+    }
+
+    .mobile-btn {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+}

@@ -66,11 +66,11 @@ function displayWishlist(wishlist) {
     let image_Url = `https://clothify-yzcm.onrender.com/${item.product_image}`;
     wishlistContainer.innerHTML += `
       <div class="col-md-4 col-lg-3 mb-4">
-        <div class="card shadow-lg border-light rounded">
+        <div class="card rounded">
           <img src="${image_Url}" alt="${item.product_name}" class="card-img-top wishlist-img" style="height: 200px; object-fit: cover;">
           <div class="card-body">
             <h5 class="card-title text-center">
-              <a href="details.html?id=${item.product_id}" class="text-decoration-none text-primary">
+              <a href="details.html?id=${item.product_id}" class="text-decoration-none text-dark">
                 ${item.product_name}
               </a>
             </h5>
@@ -144,5 +144,3 @@ function addToCart(productId) {
       console.error("Error adding to cart:", error);
     });
 }
-
-// ======================

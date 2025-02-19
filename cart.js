@@ -77,18 +77,28 @@ function displayCart(cart) {
     cartContainer.innerHTML += `
       <tr class="cart-item" data-id="${item.product_id}">
         <td style="width: 250px">
-          <img src="${imageUrl}" alt="${item.product_name}" class="img-thumbnail" style="width: 60px;">
+          <img src="${imageUrl}" alt="${
+      item.product_name
+    }" class="img-thumbnail" style="width: 60px;">
           <span  class="ms-2">${item.product_name}</span>
         </td>
         <td>$<span class="item-price">${item.product_price}</span></td>
         <td class="quantity-control">
-          <button class="btn btn-sm btn-outline-primary me-1" onclick="changeQuantity(this, -1, ${item.product_id})"><i class="fas fa-minus"></i></button>
-          <input type="number" class="quantity form-control d-inline-block text-center" value="${item.quantity}" min="1"  style="width: 60px;">
-          <button class="btn btn-sm btn-outline-primary ms-1" onclick="changeQuantity(this, 1, ${item.product_id})"><i class="fas fa-plus"></i></button>
+          <button class="btn btn-sm btn-outline-primary me-1" onclick="changeQuantity(this, -1, ${
+            item.product_id
+          })"><i class="fas fa-minus"></i></button>
+          <input type="number" class="quantity form-control d-inline-block text-center" value="${
+            item.quantity
+          }" min="1"  style="width: 60px;">
+          <button class="btn btn-sm btn-outline-primary ms-1" onclick="changeQuantity(this, 1, ${
+            item.product_id
+          })"><i class="fas fa-plus"></i></button>
         </td>
         <td class="total-price">$${item.total_price.toFixed(2)}</td>
         <td>
-          <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.product_id})">
+          <button class="btn btn-danger btn-sm" onclick="removeFromCart(${
+            item.product_id
+          })">
             <i class="fas fa-trash"></i> Remove
           </button>
         </td>
@@ -98,7 +108,6 @@ function displayCart(cart) {
   checkoutBtn.disabled = false;
 }
 
-
 function changeQuantity(button, change, productId) {
   const quantityInput = button.parentElement.querySelector(".quantity");
 
@@ -107,9 +116,8 @@ function changeQuantity(button, change, productId) {
   quantityInput.value = newQuantity;
 
   console.log(`Product ID: ${productId}, Update Quantity: ${newQuantity}`);
-  updateCartItemQuantity(productId, newQuantity)
+  updateCartItemQuantity(productId, newQuantity);
 }
-
 
 function updateCartItemQuantity(productId, quantity) {
   const token = localStorage.getItem("token");
@@ -138,7 +146,6 @@ function updateCartItemQuantity(productId, quantity) {
     .catch((error) => console.error("Error update:", error));
 }
 
-
 function removeFromCart(product_id) {
   const token = localStorage.getItem("token");
 
@@ -164,7 +171,6 @@ function removeFromCart(product_id) {
     })
     .catch((error) => console.error("Error removing cart item:", error));
 }
-
 
 function goToCheckout() {
   const cartItems = JSON.parse(localStorage.getItem("cartData"));
