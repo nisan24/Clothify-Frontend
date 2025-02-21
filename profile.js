@@ -6,7 +6,7 @@ if (!token) {
   console.error("Token not found!");
 }
 
-fetch("https://clothify-yzcm.onrender.com/api/accounts/profile/", {
+fetch("https://clothify-backend-three.vercel.app/api/accounts/profile/", {
   method: "GET",
   headers: {
     Authorization: `Token ${token}`,

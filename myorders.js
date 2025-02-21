@@ -3,6 +3,8 @@ function get_id(id) {
   return id;
 }
 
+// ===================
+
 document.addEventListener("DOMContentLoaded", function () {
   const ordersTableBody = get_id("ordersTableBody");
   const modalOrderId = get_id("modalOrderId");
@@ -17,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const token = localStorage.getItem("token");
 
-  fetch("https://clothify-yzcm.onrender.com/api/order/list/", {
+  fetch("https://clothify-backend-three.vercel.app/api/order/list/", {
     method: "GET",
     headers: {
       Authorization: `Token ${token}`,
@@ -44,17 +46,17 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
         row.innerHTML = `
-                    <td>${order.id}</td>
-                    <td>${productText}</td>
-                    <td>$${order.total_price}</td>
-                    <td>${new Date(order.order_time).toLocaleDateString()}</td>
-                    <td><span class="badge ${getStatusBadge(
-                      order.order_status
-                    )}">${order.order_status}</span></td>
-                    <td><button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#orderDetailsModal" onclick="showOrderDetails(${
-                      order.id
-                    })">View</button></td>
-                `;
+          <td>${order.id}</td>
+          <td>${productText}</td>
+          <td>$${order.total_price}</td>
+          <td>${new Date(order.order_time).toLocaleDateString()}</td>
+          <td><span class="badge ${getStatusBadge(
+            order.order_status
+          )}">${order.order_status}</span></td>
+          <td><button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#orderDetailsModal" onclick="showOrderDetails(${
+            order.id
+          })">View</button></td>
+      `;
         ordersTableBody.appendChild(row);
       });
     })
@@ -63,13 +65,16 @@ document.addEventListener("DOMContentLoaded", function () {
   window.showOrderDetails = function (orderId) {
     const token = localStorage.getItem("token");
 
-    fetch(`https://clothify-yzcm.onrender.com/api/order/list/${orderId}/`, {
-      method: "GET",
-      headers: {
-        Authorization: `Token ${token}`,
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://clothify-backend-three.vercel.app/api/order/list/${orderId}/`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Token ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         order = data.order;
@@ -91,9 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
           const li = document.createElement("li");
           li.className = "list-group-item";
           li.innerHTML = `
-                        <strong>${item.product_name}</strong>
-                        <span>$${item.product_price} × ${item.quantity}</span>
-                    `;
+            <strong>${item.product_name}</strong>
+            <span>$${item.product_price} × ${item.quantity}</span>
+          `;
           modalOrderItems.appendChild(li);
         });
       })

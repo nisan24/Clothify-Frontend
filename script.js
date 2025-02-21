@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("https://clothify-yzcm.onrender.com/api/products/list/")
+  fetch("https://clothify-backend-three.vercel.app/api/products/list/")
     .then((response) => response.json())
     .then((data) => {
       product_fun("arrival_Container", data.slice(0, 8));
@@ -20,11 +20,14 @@ function product_fun(containerId, products) {
 // =====================
 
 function ProductCard(product) {
+  const product_img = `https://res.cloudinary.com/dfqwj2lfu/${product.image}`;
+  console.log("pro_img: ", product_img);
+
   return `
     <div class="col-md-3 mb-4">
           <div class="product-card" onclick="redirectToDetails(${product.id})">
             <img
-              src="${product.image}"
+              src="${product_img}"
               alt="${product.name}"
               class="product-img img-fluid"
             />
@@ -72,8 +75,8 @@ function filter_gender(gender) {
 // =====================
 
 function category_list() {
-  fetch("http://127.0.0.1:8000/api/products/category/")
-    .then((response) => response.json())
+  fetch("https://clothify-backend-three.vercel.app/api/products/category/")
+    .then((res) => res.json())
     .then((categories) => {
       const categoryContainer = document.getElementById("category-container");
       const carouselInner = document.querySelector(".carousel-inner");
@@ -86,9 +89,11 @@ function category_list() {
       let extraCategories = [];
 
       categories.forEach((category, index) => {
+          const category_img = `https://res.cloudinary.com/dfqwj2lfu/${category.image}`;
+          console.log("cate_img: ", category_img);
         const categoryItem = `
             <div class="text-center">
-              <img src="${category.image}" alt="${category.name}" class="img-fluid" style="width: 200px; height: 200px; border-radius: 50%;" />
+              <img src="${category_img}" alt="${category.name}" class="img-fluid" style="width: 200px; height: 200px; border-radius: 50%;" />
               <h5 class="p-4"><strong>${category.name}</strong></h5>
             </div>
           `;

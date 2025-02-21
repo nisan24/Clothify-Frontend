@@ -34,7 +34,7 @@ function All_WishlistData() {
     return;
   }
 
-  fetch("https://clothify-yzcm.onrender.com/api/shopping/wishlist/", {
+  fetch("https://clothify-backend-three.vercel.app/api/shopping/wishlist/", {
     method: "GET",
     headers: {
       Authorization: `Token ${token}`,
@@ -63,7 +63,7 @@ function displayWishlist(wishlist) {
   }
 
   wishlist.wishlist_items.forEach((item) => {
-    let image_Url = `https://clothify-yzcm.onrender.com/${item.product_image}`;
+    let image_Url = `https://res.cloudinary.com/dfqwj2lfu/${item.product_image}`;
     wishlistContainer.innerHTML += `
       <div class="col-md-4 col-lg-3 mb-4">
         <div class="card rounded">
@@ -96,7 +96,7 @@ function removeFromWishlist(productId) {
   const token = localStorage.getItem("token");
 
   fetch(
-    `https://clothify-yzcm.onrender.com/api/shopping/wishlist/remove/${productId}/`,
+    `https://clothify-backend-three.vercel.app/api/shopping/wishlist/remove/${productId}/`,
     {
       method: "DELETE",
       headers: {
@@ -121,7 +121,7 @@ function removeFromWishlist(productId) {
 function addToCart(productId) {
   const token = localStorage.getItem("token");
 
-  fetch("https://clothify-yzcm.onrender.com/api/shopping/cart/add/", {
+  fetch("https://clothify-backend-three.vercel.app/api/shopping/cart/add/", {
     method: "POST",
     headers: {
       Authorization: `Token ${token}`,

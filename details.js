@@ -81,7 +81,7 @@ const Details_show = () => {
   const reviewsContainer = document.getElementById("reviews-container");
 
   fetch(
-    `https://clothify-yzcm.onrender.com/api/products/list/${get_Product_id()}`
+    `https://clothify-backend-three.vercel.app/api/products/list/${get_Product_id()}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -90,15 +90,17 @@ const Details_show = () => {
         detailsContainer.innerHTML = "<h3>Product Not Found!</h3>";
         return;
       }
+        const product_img = `https://res.cloudinary.com/dfqwj2lfu/${data.image}`;
+        console.log("pro_img: ", product_img);
 
       detailsContainer.innerHTML = `
         <div class="col-md-5">
-          <img src='${data?.image}' class="img-fluid rounded">
+          <img src='${product_img}' class="img-fluid rounded" style="background-color: #F6F6F6;">
         </div>
         <div class="col-md-7">
           <h2 class="productName">${data?.name || "Unknown Product"}</h2>
           <h3 class="text-dark fw-bold">$${data?.price || "0.00"}</h3>
-          <p>${data.description}</p>
+          <p>${data.description.split(" ").slice(0, 30).join(" ")}...</p>
           <h4>Vendor: ${data?.brand || "N/A"}</h4>
           <h4>Category: ${data?.category || "N/A"}</h4>
           <h5>Color: ${data?.color || "N/A"} | <strong> Size:</strong> ${
@@ -233,7 +235,6 @@ const Details_show = () => {
           </div>
     </div>
 
-
 <!-- ----------------- -->
         </div>
       `;
@@ -320,7 +321,7 @@ const Review_Submit = (event) => {
   });
 
   fetch(
-    `https://clothify-yzcm.onrender.com/api/products/reviews/${get_Product_id()}/`,
+    `https://clothify-backend-three.vercel.app/api/products/reviews/${get_Product_id()}/`,
     {
       method: "POST",
       headers: {
@@ -378,7 +379,7 @@ function AddToCart() {
 
   console.log("info: ", { productId, quantity });
   if (token) {
-    fetch(`https://clothify-yzcm.onrender.com/api/shopping/cart/add/`, {
+    fetch(`https://clothify-backend-three.vercel.app/api/shopping/cart/add/`, {
       method: "POST",
       headers: {
         Authorization: `Token ${token}`,
@@ -417,7 +418,7 @@ function updateWishlistIcon() {
   if (!productId || !token) return;
 
   fetch(
-    `https://clothify-yzcm.onrender.com/api/shopping/wishlist/check/${productId}/`,
+    `https://clothify-backend-three.vercel.app/api/shopping/wishlist/check/${productId}/`,
     {
       method: "GET",
       headers: {
@@ -460,7 +461,7 @@ function Wishlist_fun() {
   }
 
   fetch(
-    `https://clothify-yzcm.onrender.com/api/shopping/wishlist/check/${productId}/`,
+    `https://clothify-backend-three.vercel.app/api/shopping/wishlist/check/${productId}/`,
     {
       method: "GET",
       headers: {
@@ -473,7 +474,7 @@ function Wishlist_fun() {
     .then((data) => {
       if (data.wishlist) {
         fetch(
-          `https://clothify-yzcm.onrender.com/api/shopping/wishlist/remove/${productId}/`,
+          `https://clothify-backend-three.vercel.app/api/shopping/wishlist/remove/${productId}/`,
           {
             method: "DELETE",
             headers: {
@@ -496,14 +497,17 @@ function Wishlist_fun() {
           })
           .catch((error) => console.error("Error:", error));
       } else {
-        fetch(`https://clothify-yzcm.onrender.com/api/shopping/wishlist/add/`, {
-          method: "POST",
-          headers: {
-            Authorization: `Token ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ product: productId }),
-        })
+        fetch(
+          `https://clothify-backend-three.vercel.app/api/shopping/wishlist/add/`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Token ${token}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ product: productId }),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log("Add Wishlist:", data);

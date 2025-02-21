@@ -287,7 +287,7 @@ const handleLogout = (event) => {
   event.preventDefault();
   const token = localStorage.getItem("token");
 
-  fetch("http://127.0.0.1:8000/api/accounts/logout/", {
+  fetch("https://clothify-backend-three.vercel.app/api/accounts/logout/", {
     method: "POST",
     headers: {
       Authorization: `Token ${token}`,
@@ -310,7 +310,7 @@ const handleLogout = (event) => {
 function cartCountShow() {
   const token = localStorage.getItem("token");
 
-  fetch("https://clothify-yzcm.onrender.com/api/shopping/cart/", {
+  fetch("https://clothify-backend-three.vercel.app/api/shopping/cart/", {
     method: "GET",
     headers: {
       Authorization: `Token ${token}`,
@@ -332,7 +332,7 @@ function cartCountShow() {
 function wishlistCountShow() {
   const token = localStorage.getItem("token");
 
-  fetch("https://clothify-yzcm.onrender.com/api/shopping/wishlist/", {
+  fetch("https://clothify-backend-three.vercel.app/api/shopping/wishlist/", {
     method: "GET",
     headers: {
       Authorization: `Token ${token}`,

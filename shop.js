@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // ===========================
 
 function loadAllProducts() {
-  fetch("https://clothify-yzcm.onrender.com/api/products/list/")
+  fetch("https://clothify-backend-three.vercel.app/api/products/list/")
     .then((res) => res.json())
     .then((data) => {
       // console.log(data);
@@ -77,12 +77,14 @@ function displayProducts(data) {
   data.forEach((product) => {
     const productCard = document.createElement("div");
     productCard.classList.add("col-lg-4", "col-md-6", "mb-4");
+      const product_img = `https://res.cloudinary.com/dfqwj2lfu/${product.image}`;
+      console.log("pro_img: ", product_img);
 
     productCard.innerHTML = `
 
         <div class="product-card image-container">
             <img
-              src="${product.image}"
+              src="${product_img}"
               alt="${product.name}"
               class="product-img img-fluid"
             />
@@ -137,7 +139,7 @@ function AddToCart(productId) {
   // console.log("info: ", productId);
 
   if (token) {
-    fetch(`https://clothify-yzcm.onrender.com/api/shopping/cart/add/`, {
+    fetch(`https://clothify-backend-three.vercel.app/api/shopping/cart/add/`, {
       method: "POST",
       headers: {
         Authorization: `Token ${token}`,
@@ -182,7 +184,7 @@ function Wishlist_fun(productId) {
   }
 
   fetch(
-    `https://clothify-yzcm.onrender.com/api/shopping/wishlist/check/${productId}/`,
+    `https://clothify-backend-three.vercel.app/api/shopping/wishlist/check/${productId}/`,
     {
       method: "GET",
       headers: {
@@ -195,7 +197,7 @@ function Wishlist_fun(productId) {
     .then((data) => {
       if (data.wishlist) {
         fetch(
-          `https://clothify-yzcm.onrender.com/api/shopping/wishlist/remove/${productId}/`,
+          `https://clothify-backend-three.vercel.app/api/shopping/wishlist/remove/${productId}/`,
           {
             method: "DELETE",
             headers: {
@@ -215,14 +217,17 @@ function Wishlist_fun(productId) {
           })
           .catch((error) => console.error("Error:", error));
       } else {
-        fetch(`https://clothify-yzcm.onrender.com/api/shopping/wishlist/add/`, {
-          method: "POST",
-          headers: {
-            Authorization: `Token ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ product: productId }),
-        })
+        fetch(
+          `https://clothify-backend-three.vercel.app/api/shopping/wishlist/add/`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Token ${token}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ product: productId }),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log("Add Wishlist:", data);
@@ -297,7 +302,7 @@ function applyFilters() {
   if (gender) queryParams.append("categorys", gender);
 
   fetch(
-    `https://clothify-yzcm.onrender.com/api/products/list/?${queryParams.toString()}`
+    `https://clothify-backend-three.vercel.app/api/products/list/?${queryParams.toString()}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -423,7 +428,7 @@ function gender_filter(gender) {
   console.log("Gender:", gender);
 
   fetch(
-    `https://clothify-yzcm.onrender.com/api/products/list/?categorys=${gender}`
+    `https://clothify-backend-three.vercel.app/api/products/list/?categorys=${gender}`
   )
     .then((res) => res.json())
     .then((data) => {

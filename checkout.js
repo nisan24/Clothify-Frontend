@@ -46,7 +46,7 @@ function displayOrderSummary() {
   const shippingCost = document.getElementById("shippingCost");
   const totalAmount = document.getElementById("totalAmount");
 
-  fetch("https://clothify-yzcm.onrender.com/api/shopping/cart/", {
+  fetch("https://clothify-backend-three.vercel.app/api/shopping/cart/", {
     method: "GET",
     headers: {
       Authorization: `Token ${token}`,
@@ -84,7 +84,7 @@ function create_Order(fullName, email, phone, address) {
 
   console.log("Order Data:", orderData);
 
-  fetch("https://clothify-yzcm.onrender.com/api/orders/", {
+  fetch("https://clothify-backend-three.vercel.app/api/orders/", {
     method: "POST",
     headers: {
       Authorization: `Token ${token}`,
@@ -107,7 +107,7 @@ function orderPayment(orderId) {
   const token = localStorage.getItem("token");
   console.log("T- ", token);
 
-  fetch("https://clothify-yzcm.onrender.com/api/payment/create/", {
+  fetch("https://clothify-backend-three.vercel.app/api/payment/create/", {
     method: "POST",
     headers: {
       Authorization: `Token ${token}`,

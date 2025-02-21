@@ -7,7 +7,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     message: document.getElementById("message").value,
   };
 
-  fetch("https://clothify-yzcm.onrender.com/api/contacts/", {
+  fetch("https://clothify-backend-three.vercel.app/api/contacts/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
