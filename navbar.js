@@ -207,8 +207,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <i class="bi bi-person-circle"></i>
       </a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Accounts</a></li>
-        <li><a class="dropdown-item" href="my_order.html"><i class="fas fa-box-open me-2"></i> Orders</a></li>
+        <li><a class="dropdown-item" href="dashboard.html"><i class="fas fa-user me-2"></i> Dashboard</a></li>
+        <li><a class="dropdown-item" href="my_order.html"><i class="fas fa-box-open me-2"></i>My Orders</a></li>
         <li><a class="dropdown-item text-red" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
       </ul>
     </div>
