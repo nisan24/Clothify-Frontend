@@ -50,7 +50,7 @@ body {
 .contact-form button {
   width: 100%;
   padding: 12px;
-  background-color: #007bff;
+  /* background-color: #007bff; */
   color: #ffffff;
   font-size: 1.2rem;
   font-weight: bold;
