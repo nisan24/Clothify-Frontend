@@ -1,82 +1,83 @@
 body {
   font-family: "Arial", sans-serif;
   line-height: 1.6;
-  background-color: #121212;
-  color: #f5f5f5;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 .hero-about {
-  background: linear-gradient(45deg, #1e2a47, #283b5d);
+  background-color: #2C3E50;
   padding: 80px 0;
   text-align: center;
+  color: #fff;
 }
 
 .hero-about h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: #fff;
 }
 
 .hero-about p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #ccc;
 }
 
 .hero-about button {
-  background-color: #fff;
-  color: #333;
-  font-size: 1.1rem;
-  padding: 12px 30px;
+  background-color: #2980B9;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 14px 30px;
   border-radius: 30px;
   border: none;
   transition: background-color 0.3s ease;
 }
 
 .hero-about button:hover {
-  background-color: #2196f3;
+  background-color: #3498DB;
   color: #fff;
 }
 
 .our-story {
-  background-color: #f5f5f5;
+  background-color: #ECF0F1;
   padding: 60px 0;
-  color: #333;
+  color: #2C3E50;
 }
 
 .our-story h2 {
   font-size: 2.5rem;
-  color: #121212;
+  color: #2C3E50;
 }
 
 .our-story p {
   font-size: 1.2rem;
-  color: #666;
+  color: #7F8C8D;
 }
 
 .our-story img {
   border-radius: 15px;
-  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .about img {
   border-radius: 15px;
-  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .our-values i {
-  color: #2196f3;
+  color: #242424;
 }
 
 .our-values h4 {
-  color: #fff;
+  color: #34495E;
 }
 
 .our-values p {
-  color: #ccc;
+  color: #7F8C8D;
 }
 
 .team-card {
   text-align: center;
-  background-color: #2c2c2c;
+  background-color: #34495E;
   border-radius: 10px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   padding: 20px;
@@ -89,7 +90,7 @@ body {
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
-  border: 5px solid #2196f3;
+  border: 5px solid #2980B9;
 }
 
 .team-card h3 {
@@ -98,12 +99,12 @@ body {
 }
 
 .team-card p {
-  color: #aaa;
+  color: #BDC3C7;
 }
 
 footer {
-  background-color: #1f1f1f;
-  color: #ccc;
+  background-color: #2C3E50;
+  color: #BDC3C7;
   text-align: center;
   padding: 15px 0;
 }
@@ -114,9 +115,6 @@ footer p {
 }
 
 button:hover {
-  background-color: #2196f3;
+  background-color: #3498DB;
   color: #fff;
 }
-
-
-

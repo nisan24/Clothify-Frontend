@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.json())
     .then((data) => {
       product_fun("arrival_Container", data.slice(0, 8));
-      product_fun("sellers_Container", data.slice(4, 8));
+      product_fun("sellers_Container", data.slice(0, 6));
     })
     .catch((error) => console.error("fetching error:", error));
 
@@ -92,9 +92,9 @@ function category_list() {
           const category_img = `https://res.cloudinary.com/dfqwj2lfu/${category.image}`;
           console.log("cate_img: ", category_img);
         const categoryItem = `
-            <div class="text-center">
-              <img src="${category_img}" alt="${category.name}" class="img-fluid" style="width: 200px; height: 200px; border-radius: 50%;" />
-              <h5 class="p-4"><strong>${category.name}</strong></h5>
+            <div class="text-center p-4">
+              <a href="shop.html?category=${category.name}" class="text-dark"><img src="${category_img}" alt="${category.name}" class="img-fluid bg-dark" style="width: 200px; height: 200px; border-radius: 50%;" />
+              <h5 class="p-4"><strong>${category.name}</strong></h5></a>
             </div>
           `;
 

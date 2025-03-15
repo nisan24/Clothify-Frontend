@@ -101,6 +101,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="myorders.css">
+    <link rel="stylesheet" href="wishlist.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -259,7 +261,7 @@
     <div class="content" id="content">
         <!-- Dashboard Tab -->
         <div id="dashboard" class="tab-content">
-            <h2>Welcome Back, User! 👋</h2>
+            <h2>Welcome Back! 👋</h2>
             <div class="row">
                 <div class="col-md-3 col-6">
                     <div class="card-box bg-primary text-white p-3">Total Orders: 12</div>
@@ -279,40 +281,133 @@
 
         <!-- Orders Tab -->
         <div id="orders" class="tab-content" style="display: none;">
-            <h2>My Orders</h2>
-            <table class="table table-bordered">
-                <tr>
-                    <th>Order ID</th>
-                    <th>Product</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <td>201</td>
-                    <td>T-Shirt</td>
-                    <td>$25</td>
-                    <td>Delivered</td>
-                </tr>
-                <tr>
-                    <td>202</td>
-                    <td>Jeans</td>
-                    <td>$40</td>
-                    <td>Processing</td>
-                </tr>
-            </table>
+            <div class="container">
+                <h1 class="text-center mb-4">🛒 My Orders</h1>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Product Name</th>
+                                <th>Total Price</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- modal -->
+            <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="orderDetailsModalLabel">
+                                Order Details
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>
+                                        <strong>Order ID:</strong> <span id="modalOrderId"></span>
+                                    </p>
+                                    <p><strong>Name:</strong> <span id="modalFullName"></span></p>
+                                    <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                                    <p><strong>Phone:</strong> <span id="modalPhone"></span></p>
+                                    <p><strong>Address:</strong> <span id="modalAddress"></span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>
+                                        <strong>Total Price:</strong> $<span id="modalTotalPrice"></span>
+                                    </p>
+                                    <p>
+                                        <strong>Shipping Cost:</strong> $<span id="modalShippingCost"></span>
+                                    </p>
+                                    <p>
+                                        <strong>Order Status:</strong>
+                                        <span id="modalOrderStatus" class="badge"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr />
+                            <h6>Items:</h6>
+                            <ul id="modalOrderItems" class="list-group">
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- Wishlist Tab -->
         <div id="wishlist" class="tab-content" style="display: none;">
-            <h2>Wishlist</h2>
-            <p>❤️ 5 Items in your wishlist</p>
+            <div class="container">
+                <h1 class="text-center text-dark mb-4">❤️ Wishlist ❤️</h1>
+                <div id="wishlistContainer" class="row row-cols-1 row-cols-md-3 g-4"></div>
+            </div>
         </div>
 
         <!-- Profile Tab -->
         <div id="profile" class="tab-content" style="display: none;">
-            <h2>Profile Settings</h2>
-            <p>Name: John Doe</p>
-            <button class="btn btn-danger">Change Password</button>
+            <!-- Account Tab -->
+            <div class="content-page" id="account">
+                <h2 class="mb-4 text-center">My Account</h2>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card shadow-sm p-4">
+                            <h5 class="mb-3">Personal Information</h5>
+                            <form id="account-form">
+                                <div class="mb-3">
+                                    <label for="first-name" class="form-label fw-bold">First Name: </label>
+                                    <span id="first-name" class="form-text">Nisan</span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="last-name" class="form-label fw-bold">Last Name: </label>
+                                    <span id="last-name" class="form-text">Hossain</span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label fw-bold">Email Address: </label>
+                                    <span id="email" class="form-text">nisan@gmail.com</span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label fw-bold">Phone Number: </label>
+                                    <span id="phone" class="form-text">+88016393554</span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label fw-bold">Address: </label>
+                                    <span id="address" class="form-text">Sonargaon, Narayanganj</span>
+                                </div>
+                                <button type="button" id="edit-button" class="btn btn-secondary w-100">Edit</button>
+                                <button type="button" id="save-button" class="btn btn-primary w-100"
+                                    style="display:none;">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card shadow-sm p-4 text-center">
+                            <img src="" alt="Profile Image" class="img-fluid rounded-circle mb-3"
+                                style="width: 120px; height: 120px;">
+                            <h5 class="mb-2">Nisan Hossain</h5>
+                            <p class="text-muted">nisan@gmail.com</p>
+                            <button class="btn btn-primary w-100">Change Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Support Tab -->
@@ -321,6 +416,8 @@
             <p>Need Help? Contact us at support@clothify.com</p>
         </div>
     </div>
+
+
 
     <script>
         function toggleSidebar() {
@@ -363,6 +460,70 @@
             }
         });
 
+        //===========================
+        // Account Tab Section ========================================
+        function fetchData() {
+            fetch("https://stay-ease-drf.vercel.app/api/accounts/profile/")
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+
+                    document.getElementById("first-name").innerText = data.first_name || "Not provided";
+                    document.getElementById("last-name").innerText = data.last_name || "Not provided";
+                    document.getElementById("email").innerText = data.email || "Not provided";
+                    document.getElementById("phone").innerText = data.phone_number || "Not provided";
+                    document.getElementById("address").innerText = data.address || "Not provided";
+
+                    if (data.profile_image) {
+                        document.querySelector(".card img").src = data.profile_image;
+                    }
+                })
+                .catch(error => console.error("Error fetching data: ", error));
+        }
+
+        window.onload = fetchData;
+
+        const editButton = document.getElementById("edit-button");
+        const saveButton = document.getElementById("save-button");
+        const fields = document.querySelectorAll("#first-name, #last-name, #email, #phone, #address");
+
+        function checkChanges() {
+            let isModified = false;
+            fields.forEach(field => {
+                const inputField = field.querySelector("input");
+                if (inputField && inputField.value !== field.innerText) {
+                    isModified = true;
+                }
+            });
+            saveButton.disabled = !isModified;
+        }
+
+        function toggleEditMode() {
+            if (editButton.style.display !== "none") {
+                editButton.style.display = "none";
+                saveButton.style.display = "inline-block";
+                fields.forEach(field => {
+                    const currentValue = field.innerText;
+                    field.innerHTML = `<input type="text" value="${currentValue}" class="form-control" oninput="checkChanges()" />`;
+                });
+            } else {
+                saveButton.style.display = "none";
+                editButton.style.display = "inline-block";
+                fields.forEach(field => {
+                    const input = field.querySelector("input");
+                    field.innerHTML = input.value;
+                });
+                checkChanges();
+            }
+        }
+
+        editButton.addEventListener("click", toggleEditMode);
+        saveButton.addEventListener("click", toggleEditMode);
+        checkChanges();
+
+        //===========================
+
+
         document
             .getElementById("logoutBtn")
             .addEventListener("click", handleLogout);
@@ -391,6 +552,8 @@
                 });
         };
     </script>
+    <script src="myorders.js"></script>
+    <script src="wishlist.js"></script>
 </body>
 
 </html>
